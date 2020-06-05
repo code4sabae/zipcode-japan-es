@@ -1,6 +1,6 @@
 # 郵便番号コンポーネント ES
 
-KEN_ALL.ZIPをデータソースとして使った、郵便番号データを地方公共団体コードと町名、町名のよみへ変換するESモジュールです。
+KEN_ALL.ZIPをデータソースとして使った、郵便番号データを[地方公共団体コード](https://github.com/code4sabae/lgcode)と町名、町名のよみへ変換するESモジュールです。
 
 [![esmodules](https://taisukef.github.com/denolib/esmodulesbadge.svg)](https://developer.mozilla.org/ja/docs/Web/JavaScript/Guide/Modules)
 [![deno](https://taisukef.github.com/denolib/denobadge.svg)](https://deno.land/)
@@ -22,7 +22,8 @@ console.log(await fromZipCode(9160042)); // [{ lgcode: "18207", town: "新横江
 toplevel await 非対応のブラウザでは、async関数内で使用してください。  
 
 - データソースは [国税庁法人番号公表サイト・基本3情報](https://www.houjin-bangou.nta.go.jp/download/) をダウンロードしたものです
-- 本パッケージに添付されているデータは 令和2年5月29日更新 のものになります （元パッケージは、令和元年12月27日更新）
+- 地方公共団体コードは、[地方公共団体コード ESモジュール](https://github.com/code4sabae/lgcode)を使って都道府県と市区町村に変換できます
+- 本パッケージに添付されているデータは 2020年5月29日更新 のものになります
 
 ## インストール
 
