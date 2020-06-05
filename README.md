@@ -16,9 +16,9 @@ KEN_ALL.ZIPをデータソースとして使った、郵便番号データを[�
 ```
 import { fromZipCode } from "https://code4sabae.github.io/zipcode-japan-es/zipcode.mjs";
 
-console.log(await fromZipCode(9160042)); // [{ lgcode: "18207", town: "新横江", townyomi: "シンヨコエ" }]
+console.log(await fromZipCode(9160042)); // [{ zipcode: "9160042", lgcode: "18207", town: "新横江", townyomi: "シンヨコエ" }]
 ```
-郵便番号（半角、全角、ハイフン付き、空白付きOK！）を渡すと、該当する配列を返します。見つからない場合は長さ0の配列 [] を返します。  
+郵便番号（半角、全角、ハイフン付き、空白付きOK！）を渡すと、該当する配列と正規化した郵便番号を返します。見つからない場合は長さ0の配列 [] を返します。  
 toplevel await 非対応のブラウザでは、async関数内で使用してください。  
 
 - データソースは [国税庁法人番号公表サイト・基本3情報](https://www.houjin-bangou.nta.go.jp/download/) をダウンロードしたものです

@@ -3,12 +3,20 @@ import csvutil from "https://taisukef.github.io/util/util.mjs";
 
 const zipcache = {};
 const fromZipCode = async code => {
-  if (typeof code === "string") {
-    code = IMIMojiConverter.toHalfWidth(code).replace(/[\D]/g, "");
+  let s = code;
+  if (typeof s === "string") {
+    s = IMIMojiConverter.toHalfWidth(s).replace(/[\D]/g, "");
+    if (s.length < 7) {
+      s = parseInt(s) + "0000000";
+    }
+    s = s.substring(0, 7);
+  } else {
+    s = s.toString();
+    if (s.length < 7) {
+      s = "0000000" + parseInt(code);
+    }
+    s = s.substring(s.length - 7);
   }
-  let s = parseInt(code) + "0000000";
-  s = s.substring(0, 7);
-  console.log(s);
   const zip0 = parseInt(s.charAt(0));
   let cache = zipcache[zip0];
   if (!cache) {
@@ -33,10 +41,11 @@ const fromZipCode = async code => {
     }
     cache = zipcache[zip0] = json;
   }
-  const d = cache[s];
+  const d = cache[parseInt(s)];
   if (!d) { return []; }
   return d.map(d => {
     return {
+      zipcode: s,
       lgcode: d[1],
       town: d[2],
       townyomi: d[3]
