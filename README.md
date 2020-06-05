@@ -10,10 +10,10 @@ KEN_ALL.ZIPをデータソースとして使った、郵便番号データを地
 ```
 import { fromZipCode } from "https://code4sabae.github.io/zipcode-japan/zipcode.mjs";
 
-console.log(await fromZipCode(9160042)); // { lgcode: "18207", town: "新横江", townyomi: "シンヨコエ" }
+console.log(await fromZipCode(9160042)); // [{ lgcode: "18207", town: "新横江", townyomi: "シンヨコエ" }]
 ```
-toplevel await 非対応のブラウザでは、async関数内で使用してください。
-見つからない場合は null を返します。
+配列を返します。見つからない場合は長さ0の配列 [] を返します。  
+toplevel await 非対応のブラウザでは、async関数内で使用してください。  
 
 - データソースは [国税庁法人番号公表サイト・基本3情報](https://www.houjin-bangou.nta.go.jp/download/) をダウンロードしたものです
 - 本パッケージに添付されているデータは 令和2年5月29日更新 のものになります （元パッケージは、令和元年12月27日更新）
