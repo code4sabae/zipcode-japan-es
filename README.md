@@ -8,7 +8,7 @@ KEN_ALL.ZIPをデータソースとして使った、郵便番号データを地
 ## API (web / Deno)
 
 ```
-import { fromZipCode } from "https://code4sabae.github.io/zipcode-japan/zipcode.mjs";
+import { fromZipCode } from "https://code4sabae.github.io/zipcode-japan-es/zipcode.mjs";
 
 console.log(await fromZipCode(9160042)); // [{ lgcode: "18207", town: "新横江", townyomi: "シンヨコエ" }]
 ```
@@ -23,7 +23,7 @@ toplevel await 非対応のブラウザでは、async関数内で使用してく
 以下の手順でインストールしローカルでも使用できます。
 
 ```
-$ github clone https://github.com/code4sabae/zipcode-japan.git
+$ github clone https://github.com/code4sabae/zipcode-japan-es.git
 ```
 
 ## データ生成

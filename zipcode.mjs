@@ -14,7 +14,7 @@ const fromZipCode = async code => {
       const path = url.substring("file://".length, url.lastIndexOf("/") + 1);
       data = await Deno.readTextFile(path + fn);
     } else {
-      data = await (await fetch("https://code4sabae.github.io/zipcode-japan/" + fn)).text();
+      data = await (await fetch("https://code4sabae.github.io/zipcode-japan-es/" + fn)).text();
     }
     const json = {};
     const csv = csvutil.decodeCSV(data);
