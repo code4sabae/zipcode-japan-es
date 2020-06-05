@@ -5,10 +5,9 @@ KEN_ALL.ZIPをデータソースとして使った、郵便番号データを地
 [![esmodules](https://taisukef.github.com/denolib/esmodulesbadge.svg)](https://developer.mozilla.org/ja/docs/Web/JavaScript/Guide/Modules)
 [![deno](https://taisukef.github.com/denolib/denobadge.svg)](https://deno.land/)
 
-## 使用例
+## ブラウザ上での使用例
 
-郵便番号から地方公共団体コードと町名変換  
-https://code4sabae.github.io/zipcode-japan-es/main.html  
+[郵便番号から地方公共団体コードと町名変換](https://code4sabae.github.io/zipcode-japan-es/main.html)  
 [main.html](https://github.com/code4sabae/zipcode-japan-es/blob/master/main.html)  
 
 
