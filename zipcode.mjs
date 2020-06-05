@@ -7,15 +7,18 @@ const fromZipCode = async code => {
   if (typeof s === "string") {
     s = IMIMojiConverter.toHalfWidth(s).replace(/[\D]/g, "");
     if (s.length < 7) {
-      s = parseInt(s) + "0000000";
+      const n = parseInt(s);
+      s = isNaN(n) ? "0000000" : n + "0000000";
     }
     s = s.substring(0, 7);
-  } else {
+  } else if (typeof s === "number") {
     s = s.toString();
     if (s.length < 7) {
       s = "0000000" + parseInt(code);
     }
     s = s.substring(s.length - 7);
+  } else {
+    return [];
   }
   const zip0 = parseInt(s.charAt(0));
   let cache = zipcache[zip0];

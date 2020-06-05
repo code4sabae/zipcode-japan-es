@@ -10,3 +10,5 @@ console.log(await fromZipCode(9160000)); // [{ lgcode: "18207", town: "", townyo
 console.log(await fromZipCode("９１６")); // [{ lgcode: "18207", town: "", townyomi: "" }]
 console.log(await fromZipCode(8600833)); // [{ lgcode: "43101", town: "平成", townyomi: "ヘイセイ" }, { lgcode: "43104", town: "平成", townyomi: "ヘイセイ" }]
 console.log(await fromZipCode(9100000)); // []
+console.log(await fromZipCode("")); // []
+console.log(await fromZipCode(null)); // []
