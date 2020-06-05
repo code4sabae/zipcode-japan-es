@@ -19,17 +19,24 @@ const fromZipCode = async code => {
     const json = {};
     const csv = csvutil.decodeCSV(data);
     for (const d of csv) {
-      json[parseInt(d[0])] = d;
+      const n = parseInt(d[0]);
+      if (!json[n]) {
+        json[n] = [d];
+      } else {
+        json[n].push(d);
+      }
     }
     cache = zipcache[zip0] = json;
   }
   const d = cache[code];
-  if (!d) { return null; }
-  return {
-    lgcode: d[1],
-    town: d[2],
-    townyomi: d[3]
-  };
+  if (!d) { return []; }
+  return d.map(d => {
+    return {
+      lgcode: d[1],
+      town: d[2],
+      townyomi: d[3]
+    }
+  });
 };
 
 export { fromZipCode };
