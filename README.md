@@ -5,6 +5,12 @@ KEN_ALL.ZIPをデータソースとして使った、郵便番号データを地
 [![esmodules](https://taisukef.github.com/denolib/esmodulesbadge.svg)](https://developer.mozilla.org/ja/docs/Web/JavaScript/Guide/Modules)
 [![deno](https://taisukef.github.com/denolib/denobadge.svg)](https://deno.land/)
 
+## 使用例
+
+郵便番号から地方公共団体コードと町名変換  
+https://code4sabae.github.io/zipcode-japan-es/main.html  
+
+
 ## API (web / Deno)
 
 ```
@@ -42,7 +48,7 @@ $ deno test -A
 util.mjs (decodeCSV, encodeCSV)  
 https://github.com/taisukef/util  
 
-変換に、全角半角統一コンポーネント IMIMojiConverter  
+全角半角統一コンポーネント IMIMojiConverter  
 https://github.com/code4sabae/imi-moji-converter-es  
 
 ## 関連記事

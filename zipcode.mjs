@@ -1,9 +1,14 @@
+import IMIMojiConverter from "https://code4sabae.github.io/imi-moji-converter-es/IMIMojiConverter.mjs";
 import csvutil from "https://taisukef.github.io/util/util.mjs";
 
 const zipcache = {};
 const fromZipCode = async code => {
-  let s = "0000000" + parseInt(code);
-  s = s.substring(s.length - 7);
+  if (typeof code === "string") {
+    code = IMIMojiConverter.toHalfWidth(code).replace(/[ｰ\-\s]/g, "");
+  }
+  let s = parseInt(code) + "0000000";
+  s = s.substring(0, 7);
+  console.log(s);
   const zip0 = parseInt(s.charAt(0));
   let cache = zipcache[zip0];
   if (!cache) {
@@ -28,7 +33,7 @@ const fromZipCode = async code => {
     }
     cache = zipcache[zip0] = json;
   }
-  const d = cache[code];
+  const d = cache[s];
   if (!d) { return []; }
   return d.map(d => {
     return {

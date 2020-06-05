@@ -17,3 +17,12 @@ Deno.test("郵便番号検索（複数ヒット）", async () => {
 Deno.test("郵便番号検索（該当なし）", async () => {
   assertEquals(await fromZipCode(9100000), []);
 });
+Deno.test("郵便番号検索（全角）", async () => {
+  assertEquals(await fromZipCode("９１６００４２"), [{ lgcode: "18207", town: "新横江", townyomi: "シンヨコエ" }]);
+});
+Deno.test("郵便番号検索（ハイフン付き）", async () => {
+  assertEquals(await fromZipCode("９１６-００４２"), [{ lgcode: "18207", town: "新横江", townyomi: "シンヨコエ" }]);
+});
+Deno.test("郵便番号検索（省略）", async () => {
+  assertEquals(await fromZipCode("９１６"), [{ lgcode: "18207", town: "", townyomi: "" }]);
+});
