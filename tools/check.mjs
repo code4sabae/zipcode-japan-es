@@ -37,9 +37,9 @@ for (const s of ss) {
   const flgMultiTown = s[12 - 1];
   // if (flgMultiTown === "1") {
   if (flgChome === "1") {
-  // if (flgMultiZip === "1") {
+    // if (flgMultiZip === "1") {
     console.log(zipcode, lgcode, town, townyomi);
-  //   console.log(s);
+    //   console.log(s);
   }
   let zip = zipmap[zipcode];
   if (!zip) {
@@ -66,4 +66,3 @@ for (const zip in zipmap) {
   }
 }
 console.log(cnt, cnt2, cnt3); // 124433, 同じ郵便番号で複数あるのは 1535件のみ
-

@@ -37,9 +37,9 @@ for (const s of ss) {
   const flgMultiTown = s[12 - 1];
   // if (flgMultiTown === "1") {
   if (flgChome === "1") {
-  // if (flgMultiZip === "1") {
+    // if (flgMultiZip === "1") {
     console.log(zipcode, lgcode, town, townyomi);
-  //   console.log(s);
+    //   console.log(s);
   }
   let zip = zipmap[zipcode];
   if (!zip) {
@@ -70,18 +70,24 @@ console.log(cnt, cnt2, cnt3); // 124433, 同じ郵便番号で複数あるのは
 for (let i = 0; i < 10; i++) {
   denode.writeTextFileSync("../data/" + i + ".csv", "");
 }
-denode.appendTextFileSync("../data/ken_all_min_utf8.csv", csvutil.encodeCSV(minss));
+denode.appendTextFileSync(
+  "../data/ken_all_min_utf8.csv",
+  csvutil.encodeCSV(minss),
+);
 
 const minssdiv = [];
 for (let i = 0; i < 10; i++) {
   minssdiv[i] = [];
 }
 for (const s of minss) {
-  const zip0 = Math.floor(s[0] / 1000000)
+  const zip0 = Math.floor(s[0] / 1000000);
   console.log(zip0, s[0]);
   minssdiv[zip0].push(s);
   // denode.appendTextFileSync("../data/" + zip0 + ".csv", csvutil.encodeCSV(s)); // too slow
 }
 for (let i = 0; i < 10; i++) {
-  denode.writeTextFileSync("../data/" + i + ".csv", csvutil.encodeCSV(minssdiv[i]));
+  denode.writeTextFileSync(
+    "../data/" + i + ".csv",
+    csvutil.encodeCSV(minssdiv[i]),
+  );
 }
