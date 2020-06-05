@@ -4,7 +4,7 @@ import csvutil from "https://taisukef.github.io/util/util.mjs";
 const zipcache = {};
 const fromZipCode = async code => {
   if (typeof code === "string") {
-    code = IMIMojiConverter.toHalfWidth(code).replace(/[ｰ\-\s]/g, "");
+    code = IMIMojiConverter.toHalfWidth(code).replace(/[\D]/g, "");
   }
   let s = parseInt(code) + "0000000";
   s = s.substring(0, 7);
