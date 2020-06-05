@@ -9,6 +9,7 @@ KEN_ALL.ZIPをデータソースとして使った、郵便番号データを地
 
 郵便番号から地方公共団体コードと町名変換  
 https://code4sabae.github.io/zipcode-japan-es/main.html  
+[main.html](https://github.com/code4sabae/zipcode-japan-es/blob/master/main.html)  
 
 
 ## API (web / Deno)
