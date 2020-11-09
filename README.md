@@ -34,10 +34,13 @@ toplevel await 非対応のブラウザでは、async関数内で使用してく
 $ github clone https://github.com/code4sabae/zipcode-japan-es.git
 ```
 
-## データ生成
+## データ生成、データ更新
 
-[国税庁法人番号公表サイト・全件データのダウンロード（各都道府県別）](https://www.post.japanpost.jp/zipcode/download.html) から CSV 形式・Unicode をダウンロードした KEN_ALL.ZIP を toolsフォルダの download.mjs、sjis2utf8.sh、makedata.mjs を使って data ファルダ内のCSVファイルを生成します。
-生成後、tempフォルダは削除して構いません。
+```
+$ cd tools
+$ sh makedata.sh
+```
+[国税庁法人番号公表サイト・全件データのダウンロード（各都道府県別）](https://www.post.japanpost.jp/zipcode/download.html) を使用します
 
 ## テスト
 
