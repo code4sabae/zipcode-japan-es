@@ -1,9 +1,10 @@
-# 郵便番号ESモジュール
+# zipcode-japan-es / 郵便番号ESモジュール
 
-KEN_ALL.ZIPをデータソースとして使った、郵便番号データを[地方公共団体コード](https://github.com/code4sabae/lgcode)と町名、町名のよみへ変換するESモジュールです。
+KEN_ALL.ZIPをデータソースとして使った、郵便番号データを[地方公共団体コード](https://github.com/code4sabae/lgcode)と町名、町名のよみへ変換するESモジュールです。  
+This ES module converts Japanese zip codes to addresses. (Local government codes and town names.)  
 
 [![esmodules](https://taisukef.github.com/denolib/esmodulesbadge.svg)](https://developer.mozilla.org/ja/docs/Web/JavaScript/Guide/Modules)
-[![deno](https://taisukef.github.com/denolib/denobadge.svg)](https://deno.land/)
+[![deno](https://taisukef.github.com/denolib/denobadge@1.0.5.svg)](https://deno.land/)
 
 ## ブラウザ上での使用例
 
