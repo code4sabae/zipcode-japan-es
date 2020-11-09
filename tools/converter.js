@@ -1,8 +1,8 @@
-import csvutil from "https://taisukef.github.io/util/util.mjs";
+import { CSV } from "https://code4sabae.github.io/js/CSV.js";
 import IMIMojiConverter from "https://code4sabae.github.io/imi-moji-converter-es/IMIMojiConverter.mjs";
-import denode from "./denode.mjs";
+//import denode from "./denode.mjs";
 
-const ss = csvutil.decodeCSV(denode.readTextFileSync("temp/ken_all_utf8.csv")); // head less csv
+const ss = CSV.decode(await Deno.readTextFile("data/ken_all_utf8.csv")); // head less csv
 /*
 1. 全国地方公共団体コード（JIS X0401、X0402）………　半角数字
 2. （旧）郵便番号（5桁）………………………………………　半角数字
@@ -21,10 +21,72 @@ const ss = csvutil.decodeCSV(denode.readTextFileSync("temp/ken_all_utf8.csv")); 
 15. 変更理由　（「0」は変更なし、「1」市政・区政・町政・分区・政令指定都市施行、「2」住居表示の実施、「3」区画整理、「4」郵便区調整等、「5」訂正、「6」廃止（廃止データのみ使用））
 */
 
+// check
+let bks = null;
+let dupflg = false;
+const ss2 = [];
+let dupcnt = 0;
+for (const s of ss) {
+  if (s.length !== 15) {
+    console.log(s.length, s); // 15じゃないものはない
+  }
+  const lgcode = s[0];
+  if (lgcode.length !== 5) {
+    console.log(lgcode.length, lgcode);
+  }
+  const zipcode = s[2];
+  if (zipcode.length !== 7) {
+    console.log(zipcode);
+  }
+  /*
+  if (zipcode === "6028368") {
+    console.log(s); // 続いてる！
+  }
+  */
+  /* 1839件、同じ郵便番号で違う町名
+  if (bks && s[12] === "1" && bks[2] === s[2]) {
+    console.log(bks, s);
+    dupcnt++;
+  }
+  */
+  // 303レコード、206件、住所連続
+  if (bks && s[12] === "0" && bks[2] === s[2]) {
+    if (bks[5] !== s[5]) {
+      bks[5] += s[5];
+      if (zipcode === "6028368") {
+        console.log(bks[8]);
+      }
+    }
+    if (bks[8] !== s[8]) {
+      bks[8] += s[8];
+    }
+    dupflg = true;
+  } else {
+    if (bks) {
+      if (dupflg) {
+        dupcnt++;
+        //console.log(bks);
+      }
+      ss2.push(bks);
+    }
+    dupflg = false;
+    bks = s;
+  }
+}
+if (bks) {
+  if (dupflg) {
+    dupcnt++;
+    console.log(bks);
+  }
+  ss2.push(bks);
+}
+console.log(dupcnt);
+// Deno.exit(0);
+
 const zipmap = {};
 const minss = [];
 let cnt = 0;
-for (const s of ss) {
+for (const s of ss2) {
   const zipcode = parseInt(s[3 - 1]);
   const lgcode = parseInt(s[1 - 1]);
   let town = s[9 - 1];
@@ -66,3 +128,25 @@ for (const zip in zipmap) {
   }
 }
 console.log(cnt, cnt2, cnt3); // 124433, 同じ郵便番号で複数あるのは 1535件のみ
+
+await Deno.writeTextFile(
+  "../data/ken_all_min_utf8.csv",
+  CSV.encode(minss),
+);
+
+const minssdiv = [];
+for (let i = 0; i < 10; i++) {
+  minssdiv[i] = [];
+}
+for (const s of minss) {
+  const zip0 = Math.floor(s[0] / 1000000);
+  console.log(zip0, s[0]);
+  minssdiv[zip0].push(s);
+  // denode.appendTextFileSync("../data/" + zip0 + ".csv", csvutil.encodeCSV(s)); // too slow
+}
+for (let i = 0; i < 10; i++) {
+  await Deno.writeTextFile(
+    "../data/" + i + ".csv",
+    CSV.encode(minssdiv[i]),
+  );
+}
