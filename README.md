@@ -8,8 +8,8 @@ This ES module converts Japanese zip codes to addresses. (Local government codes
 
 ## ブラウザ上での使用例
 
-[郵便番号から地方公共団体コードと町名変換](https://code4sabae.github.io/zipcode-japan-es/main.html)  
-[main.html](https://github.com/code4sabae/zipcode-japan-es/blob/master/main.html)  
+ブラウザで開く [郵便番号から地方公共団体コードと町名変換](https://code4sabae.github.io/zipcode-japan-es/main.html)  
+src on GitHub [main.html](https://github.com/code4sabae/zipcode-japan-es/blob/master/main.html)  
 
 
 ## API (web / Deno)
@@ -38,7 +38,7 @@ $ github clone https://github.com/code4sabae/zipcode-japan-es.git
 $ cd tools
 $ sh makedata.sh
 ```
-[国税庁法人番号公表サイト・全件データのダウンロード（各都道府県別）](https://www.post.japanpost.jp/zipcode/download.html) を使用します
+[読み仮名データの促音・拗音を小書きで表記するもの - zip圧縮形式 日本郵便](https://www.post.japanpost.jp/zipcode/dl/kogaki-zip.html) を使用します
 
 ## テスト
 
@@ -55,6 +55,9 @@ https://github.com/taisukef/util
 https://github.com/code4sabae/imi-moji-converter-es  
 
 ## 関連記事
+
+KEN_ALL!? 郵便番号ESモジュールで開発効率化！ 経産省もGitHub公開スタート
+https://fukuno.jig.jp/2871
 
 Deno対応ESモジュール対応、IMIコンポーネントツールx4とDenoバッジ  
 https://fukuno.jig.jp/2866  
