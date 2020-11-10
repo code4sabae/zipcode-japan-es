@@ -4,7 +4,7 @@ KEN_ALL.ZIPをデータソースとして使った、郵便番号データを[�
 This ES module converts Japanese zip codes to addresses. (Local government codes and town names.)  
 
 [![esmodules](https://taisukef.github.com/denolib/esmodulesbadge.svg)](https://developer.mozilla.org/ja/docs/Web/JavaScript/Guide/Modules)
-[![deno](https://taisukef.github.com/denolib/denobadge@1.5.1.svg)](https://deno.land/)
+[![deno](https://taisukef.github.com/denolib/denobadge@1.5.2.svg)](https://deno.land/)
 
 ## ブラウザ上での使用例
 
